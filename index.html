@@ -5,34 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Simple Website</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      line-height: 1.6;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    img { max-width: 100%; height: auto; display: block; margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
-  <!-- Paragraph at the top -->
-  <p>Welcome to my website! Here's a short introduction.</p>
+  <p>meow.</p>
 
-  <!-- List of links -->
   <h2>Links</h2>
   <ul>
-    <li><a href="https://osu.ppy.sh/users/33973214" target="_blank">osu! 1</a></li>
-    <!-- Add more links like this -->
+    <li><a href="https://example.com" target="_blank">Example Link 1</a></li>
+    <li><a href="https://example.com" target="_blank">Example Link 2</a></li>
   </ul>
 
-  <!-- Images -->
   <h2>Images</h2>
-  <img src="images/mypic.jpg" alt="My Picture">
-  <!-- Add more images like this -->
-  <!-- Example: <img src="images/another-image.jpg" alt="Description"> -->
+  <div id="image-container"></div>
+
+  <script>
+    // List all image filenames here (inside the images folder)
+    const images = [
+      "buh.png",
+      "photo2.png"
+      // Add more images here as you upload them
+    ];
+
+    const container = document.getElementById('image-container');
+
+    images.forEach(filename => {
+      const img = document.createElement('img');
+      img.src = `images/${filename}`;
+      img.alt = filename;
+      container.appendChild(img);
+    });
+  </script>
 
 </body>
 </html>
+
