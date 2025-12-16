@@ -25,6 +25,23 @@
       transform: scale(1.2);
       z-index: 1;
     }
+
+
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #overlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
   </style>
 </head>
 <body>
@@ -40,6 +57,11 @@
   <h2>Images</h2>
   <div id="image-container"></div>
 
+  
+  <div id="overlay">
+    <img id="overlay-img">
+  </div>
+
   <script>
     const images = [
       "buh.gif",
@@ -49,17 +71,29 @@
       "bbqneon.jpg"
     ];
 
-    // 🔀 Randomise image order
     images.sort(() => Math.random() - 0.5);
 
     const container = document.getElementById('image-container');
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlay-img');
 
     images.forEach(filename => {
       const img = document.createElement('img');
       img.src = `images/${filename}`;
       img.alt = filename;
+
+      img.onclick = () => {
+        overlayImg.src = img.src;
+        overlay.style.display = 'flex';
+      };
+
       container.appendChild(img);
     });
+
+    overlay.onclick = () => {
+      overlay.style.display = 'none';
+      overlayImg.src = '';
+    };
   </script>
 
 </body>
